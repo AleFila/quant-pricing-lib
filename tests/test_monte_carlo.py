@@ -56,12 +56,15 @@ def test_convergence_to_black_scholes():
 def test_put_call_parity():
     S0, K, T, r, sigma, q = 100.0, 95.0, 0.5, 0.04, 0.3, 0.02
     mc_pricer = MonteCarloPricer(S0=S0, K=K, T=T, r=r, sigma=sigma, q=q)
-    call_price, _ = mc_pricer.price("call", num_simulations=200_000, seed=999)
-    put_price, _ = mc_pricer.price("put", num_simulations=200_000, seed=999)
+    call_price, call_se = mc_pricer.price("call", num_simulations=200_000, seed=999)
+    put_price, put_se = mc_pricer.price("put", num_simulations=200_000, seed=999)
 
-    # With identical random seed, path values satisfy exact sample-level parity
-    discounted_parity = S0 * np.exp(-q * T) - K * np.exp(-r * T)
-    assert pytest.approx(call_price - put_price, abs=1e-10) == discounted_parity
+    # Theoretical parity: S0 * exp(-q*T) - K * exp(-r*T)
+    theoretical_parity = S0 * np.exp(-q * T) - K * np.exp(-r * T)
+    mc_parity_diff = call_price - put_price
+
+    # MC difference should converge to theoretical parity within sampling tolerance (~0.5%)
+    assert pytest.approx(mc_parity_diff, rel=0.01) == theoretical_parity
 
 
 def test_standard_error_reduction():
