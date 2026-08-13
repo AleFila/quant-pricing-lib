@@ -230,3 +230,50 @@ Mid-market prices $\frac{\text{Bid} + \text{Ask}}{2}$ across liquid strikes ($K 
 [def3]: docs/heston_skew.png
 [def4]: docs/apple_real_skew.png
 
+---
+
+## 🚀 Quickstart & Setup
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/AleFila/quant-pricing-lib.git
+cd quant-pricing-lib
+
+### 2. Create and activate a virtual environment
+python3 -m venv .venv
+source .venv/bin/activate # On Windows: .venv\Scripts\activate
+
+### 3. Install dependencies
+pip install -r requirements.txt
+
+### 4. Run Automated Unit Tests
+pytest tests/
+
+### 5. Launch Jupyter Notebook
+jupyter notebook notebooks/demo_pricing.ipynb
+```
+
+---
+
+## 🧪 Testing & Code Quality
+
+The core library is fully covered by automated unit tests built with `pytest` (located in the `tests/` directory). The test suite ensures mathematical correctness, boundary stability, and numerical tolerance across all pricing engines:
+
+* **Black-Scholes & Greeks (`test_black_scholes.py`):** Validates Call-Put parity relations, extreme boundary conditions ($T \to 0$, $S_0 \to \infty$), and verifies analytical Greeks against finite-difference numerical approximations.
+* **Monte Carlo Engine (`test_monte_carlo.py`):** Ensures simulated estimates fall within the theoretical $1.96 \cdot \text{SE}$ confidence bounds relative to analytical baselines and verifies seed reproducibility.
+* **Heston Model (`test_heston.py`):** Verifies correct correlation matrix decomposition ($\rho$), volatility trajectory generation, and stability near the Feller condition threshold.
+* **Implied Volatility Solver (`test_implied_volatility.py`):** Tests Newton-Raphson convergence speed, tolerance precision limits ($\epsilon = 10^{-7}$), and automatic fallback safety to the Bisection method under near-zero Vega scenarios.
+
+---
+
+## 📖 References & Bibliography
+
+1. **Black, F., & Scholes, M. (1973).** *The Pricing of Options and Corporate Liabilities.* Journal of Political Economy, 81(3), 637-654.
+2. **Heston, S. L. (1993).** *A Closed-Form Solution for Options with Stochastic Volatility with Applications to Bond, Currency, and Equity Options.* The Review of Financial Studies, 6(2), 327-343.
+3. **Glasserman, P. (2004).** *Monte Carlo Methods in Financial Engineering.* Springer Science & Business Media.
+
+---
+
+## 👨‍💻 Author
+
+* **Alex Filaferro** — [LinkedIn](https://www.linkedin.com/in/alex-filaferro) | [GitHub](https://github.com/AleFila)
