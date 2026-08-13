@@ -69,25 +69,19 @@ d_1 = \frac{\ln\left(\frac{S_0}{K}\right) + \left(r + \frac{\sigma^2}{2}\right) 
 $$
 
 #### Analytical Greeks
-
 Option sensitivities (Greeks) measure the partial derivatives of the option price with respect to market parameters:
 
 * **Delta ($\Delta$):** Sensitivity to the underlying asset price:
 
-  $$
-  \Delta_{\text{Call}} = \frac{\partial C}{\partial S_0} = N(d_1)
-  $$
+$$\Delta_{\text{Call}} = \frac{\partial C}{\partial S_0} = N(d_1)$$
+
 * **Gamma ($\Gamma$):** Second-order sensitivity to the underlying asset price:
 
-  $$
-  \Gamma = \frac{\partial^2 C}{\partial S_0^2} = \frac{N'(d_1)}{S_0 \sigma \sqrt{T}}
-  $$
+$$\Gamma = \frac{\partial^2 C}{\partial S_0^2} = \frac{N'(d_1)}{S_0 \sigma \sqrt{T}}$$
+
 * **Vega ($\nu$):** Sensitivity to volatility:
 
-  $$
-  \text{Vega} = \frac{\partial C}{\partial \sigma} = S_0 \sqrt{T} N'(d_1)
-  $$
-
+$$\text{Vega} = \frac{\partial C}{\partial \sigma} = S_0 \sqrt{T} N'(d_1)$$
 ---
 
 ### 2. Monte Carlo Framework & Standard Error
