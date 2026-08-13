@@ -1,4 +1,5 @@
-# 📈 Quantitative Pricing & Volatility EngineFinancial Engineering  Derivatives Pricing Library in Python
+# 📈 Quantitative Pricing & Volatility Engine
+### Financial Engineering & Derivatives Pricing Library in Python
 
 A Python framework for European option pricing, risk sensitivity analysis (Greeks), stochastic volatility modeling, and empirical market calibration against real-world data.
 
@@ -238,18 +239,22 @@ Mid-market prices $\frac{\text{Bid} + \text{Ask}}{2}$ across liquid strikes ($K 
 ```bash
 git clone https://github.com/AleFila/quant-pricing-lib.git
 cd quant-pricing-lib
-
+```
 ### 2. Create and activate a virtual environment
+```bash
 python3 -m venv .venv
 source .venv/bin/activate # On Windows: .venv\Scripts\activate
-
+```
 ### 3. Install dependencies
+```bash
 pip install -r requirements.txt
-
+```
 ### 4. Run Automated Unit Tests
+```bash
 pytest tests/
-
+```
 ### 5. Launch Jupyter Notebook
+```bash
 jupyter notebook notebooks/demo_pricing.ipynb
 ```
 
